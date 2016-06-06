@@ -1,0 +1,35 @@
+== Automata Theory
+
+These assignments will come in handy with our plans to write a compiler. We might not directly use what you build here, at least for now, but the tools we use, use these concepts underneath.
+
+You may use a language of your choice, but Javascript is what we will be using for the compiler assignments, so you may use that if you want to save some time later. If you are really adventurous, you can use this as an assignment in Clojure ;)
+
+=== 1. DFA Generator:
+A DFA generator will accept a 5 tuple that consists of a set of states, an alphabet set, a transition function, an initial state and a set of final states. It will return a DFA which in turn can determine whether a string is in that language or not.
+
+Please ensure that the 5 tuple can be specified as a JSON object in a file. The transition function can be written as a transition table:
+ex:
+----
+q1,1,q1
+q1,0,q2
+...
+...
+----
+
+=== 2. NFA Generator:
+An NFA generator will accept a 5 tuple that consists of a set of states, an alphabet set, a transition function, an initial state and a set of final states. It will return an NFA which in turn can determine whether a string is in that language or not. Please take care to account for the epsilon.
+
+Please ensure that the 5 tuple can be specified as a JSON object in a file. The transition function can be written as a transition table:
+ex:
+----
+q1,1,q1
+q1,0,q2
+...
+...
+----
+
+=== 3. NFA -> DFA converter
+
+An NFA->DFA converter accepts a 5 tuple that defines an NFA but returns a DFA with all epsilon transitions accounted for. As with the NFA example, you should be able to specify the tuple within a JSON file.
+
+One way to test this is to have NFAs and DFAs answer the question about how many states they possess. This way, you can verify that your conversion algorithm is alright.

@@ -1,0 +1,15 @@
+{
+  "name": "automata",
+  "version": "1.0.0",
+  "description": "DFA Generator, NFA Generator, NFA -> DFA converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/*test.js"
+  },
+  "devDependencies":{
+    "chai": "*",
+    "mocha": "*"
+  },
+  "author": "Jai Prakash",
+  "license": "ISC"
+}
