@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "DFA Generator, NFA Generator, NFA -> DFA converter",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/last-stand/Automata.git"
+  },
   "scripts": {
     "test": "mocha tests/*test.js"
+  },
+  "dependencies":{
+    "lodash": "*"
   },
   "devDependencies":{
     "chai": "*",
