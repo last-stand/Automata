@@ -10,7 +10,7 @@ var trasitionFunction = {
                          'q2':{'0': 'q4', '1':'q3'},
                          'q3':{'0': 'q3', '1':'q2'},
                          'q4':{'0': 'q4', '1':'q4'},
-                        }
+                       };
 
 var dfa = dfa_gen.DFA_Generator(statesSet, alphabetSet, initialState, finalState, trasitionFunction);
 describe('DFA_Generator',function(){
@@ -63,5 +63,9 @@ describe('DFA_Generator',function(){
          done();
   		})
 
+      it('DFA should not accept 0000',function(done){
+         expect(dfa('0000')).to.equal(false);
+         done();
+  		})
   	})
 })
