@@ -13,7 +13,7 @@ var trasitionFunction = {
                        };
 
 var dfa = dfa_gen.DFA_Generator(statesSet, alphabetSet, initialState, finalState, trasitionFunction);
-describe('DFA_Generator',function(){
+describe('| DFA_Generator |',function(){
   	beforeEach(function(){
   	});
 

@@ -12,7 +12,7 @@ var trasitionFunction = {
                        };
 var nfa = nfa_gen.NFA_Generator(statesSet, alphabetSet, initialState, finalState, trasitionFunction);
 
-describe('NFA_Generator',function(){
+describe('| NFA_Generator |',function(){
   	beforeEach(function(){
   	});
 
