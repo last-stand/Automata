@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 
 var statesSet = ['q1', 'q2', 'q3'];
 var alphabetSet = ['0', '1'];
-var initialState = ['q1'];
+var initialState = 'q1';
 var finalState = ['q3'];
 var trasitionFunction = {
                          'q1':{'0':['q1'], '1': ['q1','q2']},

@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 
 var statesSet = ['q1', 'q2', 'q3', 'q4', 'q5'];
 var alphabetSet = ['0', '1'];
-var initialState = ['q1'];
+var initialState = 'q1';
 var finalState = ['q2', 'q4'];
 var trasitionFunction = {
                 'q1': {'ε':['q2','q4'], '0':[], '1':[]},
@@ -99,7 +99,7 @@ describe('| NFA Generator with ε |',function(){
       it("should accept string with tuple_two_or_three_length with multiple epsilon transition",function(done){
           var statesSet = ['q1','q2','q3','q4','q5','q6','q7','q8','q9'];
           var alphabetSet = ['0'];
-          var initialState = ['q1'];
+          var initialState = 'q1';
           var finalState = ['q4'];
           var trasitionFunction = {
                                     'q1':{'ε':['q2','q5']},
@@ -118,5 +118,22 @@ describe('| NFA Generator with ε |',function(){
           expect(nfa_two_or_three_length('000')).to.equal(true);
           done();
         });
+  });
+  describe('# NFA should accept strings that contains any number of 1s with utmost one zero',function(){
+    it("should accept string any number of 1s with utmost one zero",function(done){
+        var statesSet = ["q1","q3","q2","q5","q4"];
+        var alphabetSet = ['0', '1'];
+        var initialState = 'q1';
+        var finalState = ["q3","q5"];
+        var trasitionFunction = {
+          "q1":{"ε":["q2","q4"]},
+          "q2":{"0":["q2"],"ε":["q3"]},
+          "q3":{"1":["q3"]},
+          "q4":{"1":["q4"],"ε":["q5"]},
+          "q5":{"0":["q5"]}
+        };
+        var nfa = nfa_gen.NFA_Generator(statesSet, alphabetSet, initialState, finalState, trasitionFunction);
+        expect(nfa('')).to.equal(true);
+    });
   });
 });

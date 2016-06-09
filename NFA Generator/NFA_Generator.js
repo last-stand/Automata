@@ -8,7 +8,7 @@ var NFA_Generator = function (statesSet, alphabetSet, initialState, finalState, 
         });
         return _.flattenDeep(nextState);
     };
-    var currentState = input.split('').reduce(reducer, initialState);
+    var currentState = input.split('').reduce(reducer, [initialState]);
     return _.intersection( finalState ,currentState).length > 0;
   }
 }
