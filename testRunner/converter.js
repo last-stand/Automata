@@ -2,6 +2,7 @@
 // ex:
 var dfaGen=require('../DFA Generator/DFA_Generator');
 var nfaGen=require('../NFA Generator/NFA_Generator_with_ε');
+var nfa_dfa_converter = require('../NFA to DFA Converter/NFA_DFA_Converter');
 
 
 /*

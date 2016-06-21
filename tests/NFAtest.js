@@ -56,7 +56,5 @@ describe('| NFA_Generator |',function(){
          expect(nfa('100')).to.equal(false);
          done();
   		})
-
     })
-
 })
