@@ -3,9 +3,9 @@ var epsilon = 'e';
 var NFA_DFA_Converter = function(touple){
     var dfaTouple = {};
     dfaTouple.alphabetSet = touple.alphabetSet;
-    dfaTouple.statesSet = _.map(getAllStateCombinations(touple.statesSet), function(state){ return state.join('') });
+    dfaTouple.statesSet = _.map(getAllStateCombinations(touple.statesSet), function(state){ return state.sort(ascendingSort).join('') });
     dfaTouple.trasitionFunction = getDFATransitionTable(touple.trasitionFunction, touple.alphabetSet, touple.statesSet);
-    dfaTouple.initialState = getDFAInitialState(touple.trasitionFunction, [touple.initialState])[0];
+    dfaTouple.initialState = getDFAInitialState(touple.trasitionFunction, [touple.initialState]);
     dfaTouple.finalState = getDFAFinalStates(dfaTouple.statesSet, touple.finalState);
     return dfaTouple;
 }
@@ -70,8 +70,8 @@ var alphabetTraverse = function(state, alphabetSet, newState, trasitionFunction)
 }
 
 var ascendingSort = function(first,next){
-  return first>next;
-}
+  return first.match(/[0-9]+/g) - next.match(/[0-9]+/g);
+};
 
 var combinationReducer = function(resultSet, element) {
     return _.map(resultSet, function(state){

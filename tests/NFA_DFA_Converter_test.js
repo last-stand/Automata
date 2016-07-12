@@ -9,14 +9,14 @@ describe('| NFA to DFA Converter |',function(){
   	});
 
   	describe("#  DFA should accept if pair of 'b' at the end of the string",function(){
-        touple.statesSet = ['A', 'B', 'C'];
+        touple.statesSet = ['q1', 'q2', 'q3'];
         touple.alphabetSet = ['a', 'b'];
-        touple.initialState = 'A';
-        touple.finalState = ['C'];
+        touple.initialState = 'q1';
+        touple.finalState = ['q3'];
         touple.trasitionFunction = {
-                                 'A':{'a':['A'], 'b': ['A','B']},
-                                 'B':{'a':['A'], 'b': ['B', 'C']},
-                                 'C':{'a':['A'], 'b': ['C']}
+                                 'q1':{'a':['q1'], 'b': ['q1','q2']},
+                                 'q2':{'a':['q1'], 'b': ['q2', 'q3']},
+                                 'q3':{'a':['q1'], 'b': ['q3']}
                                };
         var dfaTouple = nfa_dfa.NFA_DFA_Converter(touple);
         var dfa = dfa_gen.DFA_Generator(dfaTouple.statesSet, dfaTouple.alphabetSet, dfaTouple.initialState, dfaTouple.finalState, dfaTouple.trasitionFunction);
