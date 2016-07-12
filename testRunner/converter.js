@@ -35,6 +35,8 @@ exports.finiteAutomata = function(type,tuple){
       case "nfa":
           return nfaGen.NFA_Generator(statesSet, alphabetSet, initialState, finalState, trasitionFunction);
       case "nfa-to-dfa":
-            console.log("We will do in future");
+          touple = nfa_dfa_converter.NFA_DFA_Converter(touple);
+          return dfaGen.DFA_Generator(tuple.states, tuple.alphabets, tuple["start-state"], tuple["final-states"], tuple.delta);
     }
+    console.log("Please provide proper finiteAutomata.");
 }

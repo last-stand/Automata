@@ -62,24 +62,38 @@ describe('| NFA to DFA Converter |',function(){
     		})
     });
 
-    describe('# DFA should accept strings that contains any number of 1s with utmost one zero',function(){
-      it("should accept string any number of 1s with utmost one zero",function(done){
-          touple.statesSet = ["q1","q3","q2","q5","q4"];
-          touple.alphabetSet = ['0', '1'];
-          touple.initialState = 'q1';
-          touple.finalState = ["q3","q5"];
-          touple.trasitionFunction = {
-            "q1":{"e":["q2","q4"]},
-            "q2":{"0":["q2"],"e":["q3"]},
-            "q3":{"1":["q3"]},
-            "q4":{"1":["q4"],"e":["q5"]},
-            "q5":{"0":["q5"]}
-          };
+    describe('# 0*1* or 1*0*',function(){
+      touple.statesSet = ["q1","q3","q2","q5","q4"];
+      touple.alphabetSet = ['0', '1'];
+      touple.initialState = 'q1';
+      touple.finalState = ["q3","q5"];
+      touple.trasitionFunction = {
+        "q1":{"e":["q2","q4"]},
+        "q2":{"0":["q2"],"e":["q3"]},
+        "q3":{"1":["q3"]},
+        "q4":{"1":["q4"],"e":["q5"]},
+        "q5":{"0":["q5"]}
+      };
+      var dfaTouple = nfa_dfa.NFA_DFA_Converter(touple);
+      var dfa = dfa_gen.DFA_Generator(dfaTouple.statesSet, dfaTouple.alphabetSet, dfaTouple.initialState, dfaTouple.finalState, dfaTouple.trasitionFunction);
 
-          var dfaTouple = nfa_dfa.NFA_DFA_Converter(touple);
-          var dfa = dfa_gen.DFA_Generator(dfaTouple.statesSet, dfaTouple.alphabetSet, dfaTouple.initialState, dfaTouple.finalState, dfaTouple.trasitionFunction);
-          expect(dfa('0')).to.equal(true);
+      //  pass-cases\":[\"\",\"0\",\"1\",\"00\",\"11\",\"001\",\"110\",\"011\",\"100\",\"0011\",\"1100\"],\"fail-cases\":[\"101\",\"010\",\"11001\",\"00110\",\"0101\",\"1010\"]
+      it("should accept empty string",function(done){
+          expect(dfa('')).to.equal(true);
           done();
       });
+
+      it("should accept string with one 0 or one 1",function(done){
+          expect(dfa('0')).to.equal(true);
+          expect(dfa('1')).to.equal(true);
+          done();
+      });
+
+      it("should accept string with pair of 0's or 1's",function(done){
+          expect(dfa('00')).to.equal(true);
+          expect(dfa('11')).to.equal(true);
+          done();
+      });
+      
     });
 });
